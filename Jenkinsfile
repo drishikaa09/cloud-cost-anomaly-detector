@@ -15,9 +15,8 @@ pipeline {
                 sh '''
                     cd model
                     python3 -m venv venv
-                    . venv/bin/activate
-                    pip install --upgrade pip
-                    pip install pandas numpy scikit-learn matplotlib joblib
+                    venv/bin/pip install --upgrade pip
+                    venv/bin/pip install pandas numpy scikit-learn matplotlib joblib
                 '''
             }
         }
@@ -27,12 +26,10 @@ pipeline {
                 echo 'Training the anomaly detection model...'
                 sh '''
                     cd model
-                    . venv/bin/activate
-                    python3 train_model.py
+                    venv/bin/python3 train_model.py
                 '''
             }
-        }
-
+        }    
         stage('Verify Output') {
             steps {
                 echo 'Checking that predictions.csv was generated...'
