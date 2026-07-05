@@ -12,7 +12,7 @@ import os
 app = FastAPI(title="Cloud Cost Anomaly Detector")
 
 # Load all trained models at startup
-MODELS_DIR = os.path.join(os.path.dirname(__file__), "../model/models")
+MODELS_DIR = os.path.join(os.path.dirname(__file__), "model/models")
 models = {}
 for fname in os.listdir(MODELS_DIR):
     if fname.endswith("_model.pkl"):
